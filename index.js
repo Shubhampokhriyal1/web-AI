@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Sign = require('./model/logininfo')
+const path=require('path')
 const app = express();
 require('dotenv').config()
 const dbURI = process.env.connect
@@ -25,7 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 var username = 'Sign'
 app.set('view engine', 'ejs');
-
+app.set('views',path.join(__dirname,'views'))
+app.use(express.static(__dirname+'/public'))
 app.get('/register', (req, res) => {
     res.render('register', { username,errmsg,log });
 })
