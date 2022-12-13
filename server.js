@@ -70,6 +70,10 @@ app.post('/register', async (req, res) => {
 })
 
 
+app.get('/', (req, res) => {
+    res.render('index', { username,resu });
+})
+
 
 app.get('/index', (req, res) => {
     res.render('index', { username,resu });
